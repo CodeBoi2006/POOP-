@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ppoo","l":"Alumno"},{"p":"ppoo","l":"AlumnoCRUD"},{"p":"ppoo","l":"CalculadoraNumeroInscripcion"},{"p":"ppoo","l":"GeneradorNombres"},{"p":"ppoo","l":"LectorDirecciones"},{"p":"ppoo","l":"Materia"},{"p":"ppoo","l":"PPOO"},{"p":"ppoo","l":"RegistroAcademico"}];updateSearchResults();
