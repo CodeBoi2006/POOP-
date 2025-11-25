@@ -63,13 +63,13 @@ public class PPOO {
     int total = 0;
 
     try (BufferedReader br = new BufferedReader(new FileReader(rutaCSV))) {
-        // Leer y descartar encabezado (si lo hay)
+        // Leer y descartar encabezado 
         String linea = br.readLine();
 
         while ((linea = br.readLine()) != null && total < alumnos.length) {
             if (linea.trim().isEmpty()) continue;
 
-            // Detectar el separador: ';' (formato nuevo) o ',' (formato viejo)
+            // Detectar el separador: ';' o ',' 
             String separador;
             if (linea.contains(";")) {
                 separador = ";";
@@ -79,7 +79,7 @@ public class PPOO {
 
             String[] partes = linea.split(separador);
 
-            // ---------- FORMATO NUEVO (con numeroCuenta, direccion y nuevos campos) ----------
+            // FORMATO (con numeroCuenta, direccion y nuevos campos)
             // NumeroCuenta,Nombres,Apellidos,Direccion,Edad,Semestre,
             // NumeroInscripcion,Promedio,CreditosActuales,CreditosIdeales,Inscritas,Aprobadas,Materias
             if (partes.length >= 13) {
@@ -93,7 +93,7 @@ public class PPOO {
                 int    numInsc      = Integer.parseInt(partes[6].trim());
                 double promedio     = Double.parseDouble(partes[7].trim());
 
-                // Estos 4 se leen por consistencia, aunque RegistroAcademico puede recalcularlos
+                // Estos 4 se leen por consistencia pero RegistroAcademico puede volver a calcularlos
                 int creditosActuales = Integer.parseInt(partes[8].trim());
                 int creditosIdeales  = Integer.parseInt(partes[9].trim());
                 int inscritas        = Integer.parseInt(partes[10].trim());
@@ -101,7 +101,7 @@ public class PPOO {
 
                 String materiasTexto = partes[12].trim();
 
-                // Quitar comillas de materias si las tiene
+                // Quitar comillas de materias 
                 if (materiasTexto.startsWith("\"") && materiasTexto.endsWith("\"") && materiasTexto.length() >= 2) {
                     materiasTexto = materiasTexto.substring(1, materiasTexto.length() - 1);
                 }
@@ -111,7 +111,6 @@ public class PPOO {
                 RegistroAcademico reg = new RegistroAcademico();
                 reg.setMaterias(listaMaterias);
                 reg.setPromedio(promedio);
-                // si quisieras usar creditosActuales, etc., aquí podrías asignarlos con setters
 
                 AlumnoCRUD a = new AlumnoCRUD();
                 a.setNumeroCuenta(numeroCuenta);
@@ -129,7 +128,6 @@ public class PPOO {
             }
 
 
-            // Si no entra en ninguno de los formatos conocidos, la línea se ignora
             System.out.println("Línea ignorada (formato no reconocido): " + linea);
         }
 
@@ -373,7 +371,7 @@ public class PPOO {
                     String rutaImportar = sc.nextLine();
 
                     int importados = importarAlumnosDesdeCSV(alumnos, rutaImportar);
-                    totalAlumnos = importados;     // o += importados, según cómo lo manejes
+                    totalAlumnos = importados;  
 
                     System.out.println("Se importaron " + importados + " alumnos.");
 
@@ -581,3 +579,4 @@ public class PPOO {
 
 
 }
+
